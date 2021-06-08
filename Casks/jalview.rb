@@ -11,9 +11,6 @@ cask "jalview" do
   app "Jalview.app"
 
   # symlink in preparation for command line jalview in /Applications/Jalview.app/Contents/MacOS/
-  postflight do
-    Dir.chdir("#{HOMEBREW_PREFIX}/bin") do
-      File.symlink("#{appdir}/Jalview.app/Contents/MacOS/jalview", "jalview") if File.exist? "#{appdir}/Jalview.app/Contents/MacOS/jalview" unless File.exist? "jalview"
-    end
-  end
+  binary "#{appdir}/Jalview.app/Contents/MacOS/jalview"
+   
 end
